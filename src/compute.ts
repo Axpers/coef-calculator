@@ -33,13 +33,18 @@ const gestRh: course = {
 
 courseList.push(introAlgo, reseaux, sgbd, modObj, algoGraph, gestRh);
 
-let weightSum = 0;
+const accumulators = courseList.reduce(
+  (acc: course, current) => {
+    acc.grade += current.grade * current.weight;
+    acc.weight += current.weight;
+    return acc;
+  },
+  {
+    grade: 0,
+    weight: 0,
+  }
+);
 
-const gradesSum = courseList.reduce((acc, current) => {
-  weightSum += current.weight;
-  return acc + current.weight * current.grade;
-}, 0);
-
-const finalGrade = (gradesSum / weightSum).toFixed(2);
+const finalGrade = (accumulators.grade / accumulators.weight).toFixed(2);
 
 console.log(`Final grade : ${finalGrade}`);
