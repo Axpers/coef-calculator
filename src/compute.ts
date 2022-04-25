@@ -33,4 +33,12 @@ const gestRh: course = {
 
 courseList.push(introAlgo, reseaux, sgbd, modObj, algoGraph, gestRh);
 
-console.log(courseList);
+let weightSum = 0;
+
+const gradesSum = courseList.reduce((acc, current) => {
+  weightSum += current.weight;
+  return acc + current.weight * current.grade;
+}, 0);
+
+console.log(gradesSum);
+console.log(weightSum);
