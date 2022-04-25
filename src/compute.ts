@@ -7,7 +7,7 @@ const introAlgo: course = {
 };
 
 const reseaux: course = {
-  grade: 11,
+  grade: 16.08,
   weight: 3.5,
 };
 
@@ -40,5 +40,6 @@ const gradesSum = courseList.reduce((acc, current) => {
   return acc + current.weight * current.grade;
 }, 0);
 
-console.log(gradesSum);
-console.log(weightSum);
+const finalGrade = (gradesSum / weightSum).toFixed(2);
+
+console.log(`Final grade : ${finalGrade}`);
